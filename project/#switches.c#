@@ -38,7 +38,8 @@ static short pause =0;
 void switch_interrupt_handler()
 {
   char p2val = switch_sense();
-  if((SW1 & p2val)){
+  int switches = ~p2val & SWITCHES;
+  if(!(SW1 & p2val)){
     pause=0;
     siren2=0;
     siren3=0;
