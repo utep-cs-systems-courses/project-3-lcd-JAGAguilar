@@ -19,12 +19,5 @@ main()
   // drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
 
   // fillRectangle(30,30, 60, 60, COLOR_ORANGE);
-#define cenH (screenHeight/2)
-#define cenW (screenWidth/2)
-  for(int i=0; i< 20; i++){
-    drawPixel(cenH+i,cenW,COLOR_BROWN);
-    drawPixel(cenH,cenW+i,COLOR_BROWN);
-    drawPixel(cenH+20,cenW+i,COLOR_BROWN);
-    drawPixel(cenH+i,cenW+20,COLOR_BROWN);
-  }
+  drawString11x16(30,30,"hello",COLOR_GREEN,COLOR_RED);
 }

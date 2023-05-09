@@ -13,7 +13,7 @@ all: main.elf
 
 
 #additional rules for files
-main.elf: ${COMMON_OBJECTS} wakedemo.o
+main.elf: ${COMMON_OBJECTS} main.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd
 
 
