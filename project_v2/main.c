@@ -77,36 +77,42 @@ void wdt_c_handler()
   static int secCount = 0;
   if(siren1){
     secCount ++;
+    if (switches & SW4) return;
+    sirenPlaying =1;
     if (secCount <= 5) {
       buzSet(900);
       clearScreen(COLOR_BLUE);
     }
     else if(secCount<=10){
+      if (switches & SW4) return;
+      sirenPlaying =1;
       buzSet(600);
       clearScreen(COLOR_RED);
     }   
     else
       secCount = 0;
-    if (switches & SW4) return;
-    sirenPlaying =1;
   }
   if(siren2){
     secCount ++;
+    if (switches & SW4) return;
+    sirenPlaying =1;
     if (secCount <= 5) {
       buzSet(1700);
       clearScreen(COLOR_GREEN);
     }
     else if(secCount<=10){
+      if (switches & SW4) return;
+      sirenPlaying =1;
       buzSet(3800);
       clearScreen(COLOR_ORANGE);
     }   
     else
       secCount = 0;
-    if (switches & SW4) return;
-    sirenPlaying =1;
   }
   if(siren3){
     secCount ++;
+    if (switches & SW4) return;
+    sirenPlaying =1;
     if (secCount <= 5) {
       buzSet(400);
       clearScreen(COLOR_MEDIUM_PURPLE);
@@ -117,8 +123,6 @@ void wdt_c_handler()
     }   
     else
       secCount = 0;
-    if (switches & SW4) return;
-    sirenPlaying =1;
   }
 }
 
@@ -136,6 +140,7 @@ void main()
   while (1) {		
     if (sirenPlaying) {
       sirenPlaying = 0;
+      buzSet(0);
     }
     or_sr(0x10);	
   }
@@ -150,7 +155,9 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
   }
 }
 
+/*
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
   wdt_c_handler();
 }
+*/

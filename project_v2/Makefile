@@ -13,7 +13,7 @@ all: main.elf
 
 
 #additional rules for files
-main.elf: ${COMMON_OBJECTS} main.o
+main.elf: ${COMMON_OBJECTS} main.o wdt_handler.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd
 
 
